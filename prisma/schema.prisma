@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model author {
+  id      Int    @id @default(autoincrement())
+  name    String @db.VarChar(64)
+  address String @db.VarChar(255)
+  age     Int
+  book    book[]
+}
+
+model book {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(64)
+  description  String   @db.VarChar(255)
+  publish_date DateTime
+  author_id    Int
+  author       author   @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "author_id")
+
+  @@index([author_id], map: "author_id")
+  @@map("book")
+}
