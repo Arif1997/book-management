@@ -13,7 +13,7 @@ try {
     });
     return inserted_author
 } catch (error) {
-    console.log(error);
+    return error;
 }
 }
 
@@ -25,7 +25,7 @@ const saveBook = async (book) =>{
         });
         return inserted_book
     } catch (error) {
-        console.log(error);
+        return error;
     }
     }
 
@@ -39,7 +39,7 @@ const fetchAuthorById = async (author_id) =>{
         })
         return author;
     } catch (error) {
-        console.log(error)
+        return error;
     }
 }
 
@@ -53,7 +53,7 @@ const fetchBookById = async (book_id) =>{
         })
         return book;
     } catch (error) {
-        console.log(error)
+        return error;
     }
 }
 
@@ -63,7 +63,7 @@ const fetchAuthors = async () => {
         const authors = await prisma.author.findMany();
         return authors;
     } catch (error) {
-        console.log(error)
+        return error;
     }
 };
 
@@ -73,7 +73,7 @@ const fetchBooks = async () => {
         const books = await prisma.book.findMany();
         return books;
     } catch (error) {
-        console.log(error)
+        return error;
     }
 };
 
@@ -87,7 +87,7 @@ const deleteAuthorById = async (author_id) =>{
         })
         return deleted_author;
     } catch (error) {
-        console.log(error)
+        return error;
     }
 }
 
@@ -101,7 +101,7 @@ const deleteBookById = async (book_id) =>{
         })
         return deleted_book;
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
@@ -116,7 +116,7 @@ const updateAuthorById = async (author_id, updated_data) =>{
 
     return updated_author;
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
@@ -131,7 +131,7 @@ const updateBookById = async (book_id, updated_data) =>{
 
     return updated_book;
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
